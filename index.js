@@ -23,6 +23,10 @@ dbConnection();
 
 app.use("/", Routes);
 
+app.get("/vercel", (req, res)=>{
+  res.send("I love you Sadik Vai!")
+})
+
 app.listen(port, (req, res) => {
   console.log("Welcome to server");
 });
