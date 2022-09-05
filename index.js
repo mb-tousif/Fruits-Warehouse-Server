@@ -24,7 +24,7 @@ dbConnection();
 app.use("/", Routes);
 
 app.get("/vercel", (req, res)=>{
-  res.send("I love you Sadik Vai!")
+  res.send("Vercel is easy to use!")
 })
 
 app.listen(port, (req, res) => {

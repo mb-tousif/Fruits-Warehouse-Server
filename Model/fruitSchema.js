@@ -8,6 +8,7 @@ export const fruitSchema = new mongoose.Schema({
   quantity: Number,
   img: String,
   supplier: String,
+  userEmail: String,
 });
 
 const freshFruit = mongoose.model("fruit", fruitSchema);
