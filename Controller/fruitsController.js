@@ -12,6 +12,7 @@ export const getFruits = async (req, res) => {
 export const getFruit = async (req, res) => {
   try {
     const id = req.params.id
+    console.log(id);
     const fruit = await freshFruit.findOne({_id : id});
     res.status(200).json(fruit);
   } catch (error) {

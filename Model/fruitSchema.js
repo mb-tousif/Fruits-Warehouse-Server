@@ -6,6 +6,7 @@ export const fruitSchema = new mongoose.Schema({
   price: Number,
   description: String,
   quantity: Number,
+  sold: Number,
   img: String,
   supplier: String,
   userEmail: String,
