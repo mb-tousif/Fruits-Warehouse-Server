@@ -28,7 +28,10 @@ export const updateField = async (req, res)=>{
     const id = req.params.id;
     const quantity = req.body;
     console.log(quantity);
-    const updatedFruit = await freshFruit.updateOne({_id: id}, { $set: quantity})
+    const updatedFruit = await freshFruit.updateOne(
+      {_id: id},
+      {$set: quantity}
+      )
     res.status(200).json(updatedFruit);
   } catch (error) {
     res.status(500).json({ message: error.message });
