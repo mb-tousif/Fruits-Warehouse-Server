@@ -8,3 +8,19 @@ export const getUsers = async (req, res) => {
         res.status(500).json({message: error.message})
     }
 }
+
+export const updateUser = async (req, res) => {
+  try {
+    const email = req.params.email;
+    const user = req.body;
+    console.log(user);
+    const updatedUser = await users.updateOne(
+      { email: email },
+      { $set: user },
+      { upsert: true }
+    );
+    res.status(200).json(updatedUser);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
