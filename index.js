@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 dbConnection();
 
-app.use("/", Routes);
+app.use("/api", Routes);
 
 app.get("/vercel", (req, res)=>{
   res.send("Vercel is easy to use!")
