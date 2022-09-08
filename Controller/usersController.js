@@ -11,7 +11,7 @@ export const getUsers = async (req, res) => {
 
 export const postUser = async (req, res) => {
     try {
-      const exist = await users.findOne({ username: req.body.username });
+      const exist = await users.findOne({ email: req.body.email });
 
       if (exist) {
         return res.status(401).json({
