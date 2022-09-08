@@ -9,6 +9,39 @@ export const getUsers = async (req, res) => {
     }
 }
 
+export const postUser = async (req, res) => {
+    try {
+      const exist = await users.findOne({ username: req.body.username });
+
+      if (exist) {
+        return res.status(401).json({
+          message: "Username already exists",
+        });
+      }
+
+      const user = req.body;
+      const newUser = new users(user);
+      await newUser.save();
+
+      res.status(200).json({
+        message: user,
+      });
+    } catch (err) {
+      res.status(500).json({
+        message: err.message,
+      });
+    }
+    // try {
+    //     const user = req.body;
+    //     const result = new users(user);
+    //     await result.save()
+    //     console.log(result);
+    //     res.status(200).json(result)
+    // } catch (error) {
+    //     res.status(500).json({message: error.message})
+    // }
+}
+
 export const updateUser = async (req, res) => {
   try {
     const email = req.params.email;
