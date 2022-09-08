@@ -1,4 +1,6 @@
 import users from "../Model/userSchema.js";
+import pkg from "jsonwebtoken";
+const { Jwt } = pkg;
 
 export const getUsers = async (req, res) => {
     try {
@@ -52,7 +54,11 @@ export const updateUser = async (req, res) => {
       { $set: user },
       { upsert: true }
     );
-    res.status(200).json(updatedUser);
+    const accessToken = Jwt.sign({ email: email }, process.env.JWT_TOKEN, {
+      expiresIn: "10d",
+    });
+    console.log(accessToken);
+    res.status(200).json(updatedUser, accessToken);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
