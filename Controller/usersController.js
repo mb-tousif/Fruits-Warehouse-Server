@@ -1,6 +1,9 @@
 import users from "../Model/userSchema.js";
 import pkg from "jsonwebtoken";
 const { Jwt } = pkg;
+import dotenv from "dotenv";
+
+dotenv.config();
 
 export const getUsers = async (req, res) => {
     try {
@@ -54,7 +57,7 @@ export const updateUser = async (req, res) => {
       { $set: user },
       { upsert: true }
     );
-    const accessToken = Jwt.sign({ email: email }, process.env.JWT_TOKEN, {
+    const accessToken = Jwt.Sign({ email: email }, process.env.JWT_TOKEN, {
       expiresIn: "10d",
     });
     console.log(accessToken);
