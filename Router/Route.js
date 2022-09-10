@@ -1,6 +1,6 @@
 import express from "express";
 import { getBlogs } from "../Controller/blogsController.js";
-import {getFruit, getFruits, updateField} from "../Controller/fruitsController.js";
+import {delFruit, getFruit, getFruits, updateField} from "../Controller/fruitsController.js";
 import { getReviews } from "../Controller/reviewsController.js";
 import { getUsers, postUser, updateUser } from "../Controller/usersController.js";
 
@@ -10,6 +10,7 @@ const router = express.Router();
 router.get("/fruits", getFruits);
 router.get("/fruit/:id", getFruit);
 router.put("/fruit/:id", updateField);
+router.delete("/fruits/:id", delFruit);
 
 // Blogs API
 router.get("/blogs", getBlogs)
