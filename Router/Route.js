@@ -1,6 +1,7 @@
 import express from "express";
 import { getBlogs } from "../Controller/blogsController.js";
 import {getFruit, getFruits, updateField} from "../Controller/fruitsController.js";
+import { getReviews } from "../Controller/reviewsController.js";
 import { getUsers, postUser, updateUser } from "../Controller/usersController.js";
 
 const router = express.Router();
@@ -17,5 +18,8 @@ router.get("/blogs", getBlogs)
 router.get("/users", getUsers);
 router.post("/user", postUser);
 router.put("/user/:email", updateUser);
+
+// Reviews API
+router.get("/reviews", getReviews)
 
 export default router;
