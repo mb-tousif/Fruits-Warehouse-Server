@@ -3,7 +3,8 @@ import freshFruit from "../Model/fruitSchema.js"
 // Get All Fruits API
 export const getFruits = async (req, res) => {
   try {
-    const fruits = await freshFruit.find({});
+    const {limit, page} = req.query
+    const fruits = await freshFruit.find().skip(+page*limit).limit(+limit);
     res.status(200).json(fruits);
   } catch (error) {
     res.status(500).json({ message: error.message });
