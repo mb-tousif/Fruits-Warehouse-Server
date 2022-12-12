@@ -15,7 +15,7 @@ export const getFruits = async (req, res) => {
 export const postFruits = async (req, res) => {
   try {
     const fruit = req.body
-    const result = await freshFruit.save(fruit)
+    const result = await freshFruit.create(fruit)
     res.status(200).json(result);
   } catch (error) {
     res.status(500).json({ message: error.message });
