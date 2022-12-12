@@ -11,6 +11,17 @@ export const getFruits = async (req, res) => {
   }
 };
 
+// Get All Fruits API
+export const postFruits = async (req, res) => {
+  try {
+    const fruit = req.body
+    const result = await freshFruit.save(fruit)
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 // Get Single Fruit API 
 export const getFruit = async (req, res) => {
   try {

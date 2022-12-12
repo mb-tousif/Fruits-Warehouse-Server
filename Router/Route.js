@@ -8,6 +8,7 @@ const router = express.Router();
 
 // Fruits/Product API
 router.get("/fruits", getFruits);
+router.post("/fruits", );
 router.get("/fruit/:id", getFruit);
 router.put("/fruit/:id", updateField);
 router.delete("/fruits/:id", delFruit);
