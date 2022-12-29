@@ -36,15 +36,6 @@ export const postUser = async (req, res) => {
         message: err.message,
       });
     }
-    // try {
-    //     const user = req.body;
-    //     const result = new users(user);
-    //     await result.save()
-    //     console.log(result);
-    //     res.status(200).json(result)
-    // } catch (error) {
-    //     res.status(500).json({message: error.message})
-    // }
 }
 
 export const updateUser = async (req, res) => {
