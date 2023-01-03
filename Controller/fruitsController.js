@@ -4,6 +4,8 @@ import freshFruit from "../Model/fruitSchema.js"
 export const getFruits = async (req, res) => {
   try {
     const {limit, page} = req.query
+    const authHeader = req.headers.authorization;
+    console.log(authHeader);
     const fruits = await freshFruit.find().skip(+page*limit).limit(+limit);
     res.status(200).json(fruits);
   } catch (error) {
