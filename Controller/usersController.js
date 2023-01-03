@@ -2,6 +2,7 @@ import users from "../Model/userSchema.js";
 import pkg from "jsonwebtoken";
 const { Jwt } = pkg;
 import dotenv from "dotenv";
+import { generateToken } from "../utils.middleware/token.js";
 
 dotenv.config();
 
@@ -20,17 +21,15 @@ export const postUser = async (req, res) => {
 
       if (exist) {
         return res.status(401).json({
-          message: "Username already exists",
+          message: "User already exists",
         });
       }
 
       const user = req.body;
       const newUser = new users(user);
       await newUser.save();
-
-      res.status(200).json({
-        message: user,
-      });
+      const token = generateToken(user);
+      res.status(200).json({token});
     } catch (err) {
       res.status(500).json({
         message: err.message,
