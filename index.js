@@ -37,5 +37,5 @@ app.all("*", (req, res) => {
 });
 
 app.listen(port, (req, res) => {
-  console.log(`Server running on PORT: ${port}`.black.bgWhite.bold);
+  console.log(`Server running on PORT: ${port}`.america.bold);
 });

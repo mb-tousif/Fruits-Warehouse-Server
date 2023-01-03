@@ -38,21 +38,31 @@ export const postUser = async (req, res) => {
     }
 }
 
+export const getUserByEmail = async ( req, res ) => {
+  try {
+    const user = await users.findOne({ email: req.body.email });
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+}
+
 export const updateUser = async (req, res) => {
   try {
-    const email = req.params.email;
+    const id = req.params.id;
     const user = req.body;
-    console.log(user);
+    // console.log(user);
     const updatedUser = await users.updateOne(
-      { email: email },
+      { _id: id },
       { $set: user },
       { upsert: true }
     );
-    const accessToken = Jwt.Sign({ email: email }, process.env.JWT_TOKEN, {
-      expiresIn: "10d",
-    });
-    console.log(accessToken);
-    res.status(200).json(updatedUser, accessToken);
+    // const accessToken = Jwt.Sign({ email: email }, process.env.JWT_TOKEN, {
+    //   expiresIn: "10d",
+    // });
+    // console.log(accessToken);
+    // res.status(200).json(updatedUser, accessToken);
+    res.status(200).json(updatedUser);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
