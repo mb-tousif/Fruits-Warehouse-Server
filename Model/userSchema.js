@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 export const userSchema = new mongoose.Schema({
   id: String,
   email: String,
-  role: { type: String, default: "user" },
+  role: { type: String, default: "User", enum:["User", "Admin"]},
   img: String,
 });
 
