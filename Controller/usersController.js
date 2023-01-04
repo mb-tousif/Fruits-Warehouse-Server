@@ -24,9 +24,9 @@ export const postUser = async (req, res) => {
         });
       }
       
-      const token = generateToken(user);
       const user = req.body;
       const newUser = new users(user);
+      const token = generateToken(user);
       await newUser.save();
       res.status(200).json({token});
     } catch (err) {
