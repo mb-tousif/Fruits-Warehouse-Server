@@ -17,14 +17,14 @@ export const getUsers = async (req, res) => {
 
 export const postUser = async (req, res) => {
     try {
-      const token = generateToken(user);
       const exist = await users.findOne({ email: req.body.email });
       if (exist) {
         return res.status(401).json({
           message: "User already exists",
         });
       }
-
+      
+      const token = generateToken(user);
       const user = req.body;
       const newUser = new users(user);
       await newUser.save();
