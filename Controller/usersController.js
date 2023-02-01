@@ -49,7 +49,7 @@ export const updateUser = async (req, res) => {
   try {
     const id = req.params.id;
     const user = req.body;
-    // console.log(user);
+    // console.log(user, id);
     const updatedUser = await users.updateOne(
       { _id: id },
       { $set: user },
