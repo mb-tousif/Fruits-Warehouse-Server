@@ -28,7 +28,7 @@ export const postUser = async (req, res) => {
       const newUser = new users(user);
       const token = generateToken(user);
       await newUser.save();
-      res.status(200).json(token);
+      res.status(200).json({token});
     } catch (err) {
       res.status(500).json({
         message: err.message,
